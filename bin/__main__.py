@@ -28,9 +28,9 @@ __version__ = 0.1
 __date__ = '2015-08-20'
 __updated__ = '2015-08-20'
 
-DEBUG = 1
+DEBUG = 0
 TESTRUN = 0
-PROFILE = 0
+PROFILE = 1
 
 class CLIError(Exception):
     '''Generic exception to raise and log different fatal errors.'''
@@ -100,7 +100,9 @@ USAGE
 
         for inpath in paths:
             ### do something with inpath ###
-            print(inpath)
+            if inpath == 'dev_server':
+                import dev_server
+                dev_server.dev_main()
         return 0
     except KeyboardInterrupt:
         ### handle keyboard interrupt ###
